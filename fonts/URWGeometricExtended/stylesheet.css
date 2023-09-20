@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'URW Geometric Extended';
+    src: url('URWGeometricExt-Heavy.eot');
+    src: local('URW Geometric Extended Heavy'), local('URWGeometricExt-Heavy'),
+        url('URWGeometricExt-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('URWGeometricExt-Heavy.woff2') format('woff2'),
+        url('URWGeometricExt-Heavy.woff') format('woff'),
+        url('URWGeometricExt-Heavy.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'URW Geometric Extended';
+    src: url('URWGeometricExt-Bold.eot');
+    src: local('URW Geometric Extended Bold'), local('URWGeometricExt-Bold'),
+        url('URWGeometricExt-Bold.eot?#iefix') format('embedded-opentype'),
+        url('URWGeometricExt-Bold.woff2') format('woff2'),
+        url('URWGeometricExt-Bold.woff') format('woff'),
+        url('URWGeometricExt-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'URW Geometric Extended';
+    src: url('URWGeometricExt-Black.eot');
+    src: local('URW Geometric Extended Black'), local('URWGeometricExt-Black'),
+        url('URWGeometricExt-Black.eot?#iefix') format('embedded-opentype'),
+        url('URWGeometricExt-Black.woff2') format('woff2'),
+        url('URWGeometricExt-Black.woff') format('woff'),
+        url('URWGeometricExt-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'URW Geometric Extended';
+    src: url('URWGeometricExt-Regular.eot');
+    src: local('URW Geometric Extended'), local('URWGeometricExt-Regular'),
+        url('URWGeometricExt-Regular.eot?#iefix') format('embedded-opentype'),
+        url('URWGeometricExt-Regular.woff2') format('woff2'),
+        url('URWGeometricExt-Regular.woff') format('woff'),
+        url('URWGeometricExt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

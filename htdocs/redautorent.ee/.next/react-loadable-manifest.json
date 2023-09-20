@@ -1,0 +1,38 @@
+{
+  "..\\components\\Content\\en\\Contacts\\ContactPage.js -> ../../../ui/AddressMap": {
+    "id": 6427,
+    "files": [
+      "static/chunks/427.8cbc92f848c685e54c17.js"
+    ]
+  },
+  "..\\components\\Content\\en\\Main\\IndexPage.js -> ../../../ui/AddressMap": {
+    "id": 6427,
+    "files": [
+      "static/chunks/427.8cbc92f848c685e54c17.js"
+    ]
+  },
+  "..\\components\\Content\\et\\Contacts\\ContactPage.js -> ../../../ui/AddressMap": {
+    "id": 6427,
+    "files": [
+      "static/chunks/427.8cbc92f848c685e54c17.js"
+    ]
+  },
+  "..\\components\\Content\\et\\Main\\IndexPage.js -> ../../../ui/AddressMap": {
+    "id": 6427,
+    "files": [
+      "static/chunks/427.8cbc92f848c685e54c17.js"
+    ]
+  },
+  "..\\components\\Content\\ru\\Contacts\\ContactPage.js -> ../../../ui/AddressMap": {
+    "id": 6427,
+    "files": [
+      "static/chunks/427.8cbc92f848c685e54c17.js"
+    ]
+  },
+  "..\\components\\Content\\ru\\Main\\IndexPage.js -> ../../../ui/AddressMap": {
+    "id": 6427,
+    "files": [
+      "static/chunks/427.8cbc92f848c685e54c17.js"
+    ]
+  }
+}

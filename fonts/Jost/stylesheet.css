@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Jost';
+    src: url('Jost-SemiBold.eot');
+    src: local('Jost SemiBold'), local('Jost-SemiBold'),
+        url('Jost-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Jost-SemiBold.woff2') format('woff2'),
+        url('Jost-SemiBold.woff') format('woff'),
+        url('Jost-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url('Jost-Regular.eot');
+    src: local('Jost Regular'), local('Jost-Regular'),
+        url('Jost-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Jost-Regular.woff2') format('woff2'),
+        url('Jost-Regular.woff') format('woff'),
+        url('Jost-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Jost';
+    src: url('Jost-ExtraBold.eot');
+    src: local('Jost ExtraBold'), local('Jost-ExtraBold'),
+        url('Jost-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Jost-ExtraBold.woff2') format('woff2'),
+        url('Jost-ExtraBold.woff') format('woff'),
+        url('Jost-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url('Jost-Black.eot');
+    src: local('Jost Black'), local('Jost-Black'),
+        url('Jost-Black.eot?#iefix') format('embedded-opentype'),
+        url('Jost-Black.woff2') format('woff2'),
+        url('Jost-Black.woff') format('woff'),
+        url('Jost-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url('Jost-Bold.eot');
+    src: local('Jost Bold'), local('Jost-Bold'),
+        url('Jost-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Jost-Bold.woff2') format('woff2'),
+        url('Jost-Bold.woff') format('woff'),
+        url('Jost-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url('Jost-Medium.eot');
+    src: local('Jost Medium'), local('Jost-Medium'),
+        url('Jost-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Jost-Medium.woff2') format('woff2'),
+        url('Jost-Medium.woff') format('woff'),
+        url('Jost-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
