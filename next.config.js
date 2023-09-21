@@ -26,7 +26,7 @@
 // next.config.js
 
 module.exports = {
-    distDir: 'htdocs/redautorent.ee/.next', // Set the desired output directory
+    distDir: '/.next', // Set the desired output directory
     // ...other configurations
 };
   
