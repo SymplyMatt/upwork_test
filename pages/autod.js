@@ -14,6 +14,7 @@ export default function Autod({ data }) {
         if (data.status !== 200) {
             try {
                 const res = await fetch(BASE_URL + "api/catalog")
+                console.log(BASE_URL);
                 const json = await res.json()
     
                 ctx.setCatalog(json)

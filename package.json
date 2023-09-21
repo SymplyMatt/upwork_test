@@ -23,7 +23,6 @@
     "cross-env": "^7.0.3",
     "date-fns": "^2.21.3",
     "express": "^4.17.1",
-    "n": "^7.3.0",
     "next": "^11.1.2",
     "next-auth": "^3.24.0",
     "nodemailer": "^6.6.1",
@@ -36,7 +35,6 @@
     "react-transition-group": "^4.4.1",
     "sass": "^1.32.11",
     "swiper": "^6.6.2",
-    
     "uuid": "^8.3.2"
   }
 }

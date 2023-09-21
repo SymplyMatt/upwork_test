@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EMAIL": () => (/* binding */ EMAIL)
 /* harmony export */ });
 // development server constants
-const BASE_URL = "https://redautorent.ee/"; // test server constants
+const BASE_URL = "http://test.smatttech.com/"; // test server constants
 // export const BASE_URL = process.env.BASE_URL
 // export const BASE_URL = "http://81.177.48.218:9995/"
 

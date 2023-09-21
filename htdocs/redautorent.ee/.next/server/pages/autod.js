@@ -129,6 +129,7 @@ function Autod({
     if (data.status !== 200) {
       try {
         const res = await fetch(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.BASE_URL + "api/catalog");
+        console.log(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.BASE_URL);
         const json = await res.json();
         ctx.setCatalog(json);
       } catch (e) {

@@ -1,5 +1,5 @@
 // development server constants
-export const BASE_URL = "https://redautorent.ee/"
+export const BASE_URL = "http://test.smatttech.com/"
 // test server constants
 // export const BASE_URL = process.env.BASE_URL
 // export const BASE_URL = "http://81.177.48.218:9995/"
