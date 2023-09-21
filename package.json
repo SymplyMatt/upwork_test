@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "node": "14.17.6",
-    "npm": "6.9.1"
+    "npm": "6.14.13"
   },
   "scripts": {
     "mydev": "next dev -p 3344",
