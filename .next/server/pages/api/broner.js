@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EMAIL": () => (/* binding */ EMAIL)
 /* harmony export */ });
 // development server constants
-const BASE_URL = "https://upworktest-jprq.onrender.com/"; // test server constants
+const BASE_URL = "https://autorent-f693e3f890eb.herokuapp.com/"; // test server constants
 // export const BASE_URL = process.env.BASE_URL
 // export const BASE_URL = "http://81.177.48.218:9995/"
 
@@ -50,28 +50,28 @@ const smtp = {
   port: parseInt(process.env.GMAIL_PORT)
 };
 const user = {
-  username: process.env.GMAIL_USERNAME,
-  password: process.env.GMAIL_PASSWORD
+  username: 'symplymatt@gmail.com',
+  password: 'hkxqumwnhprnbuyr'
 };
 
 async function main(mail) {
   let transporter = nodemailer.createTransport({
     sendmail: true,
-    host: 'localhost',
-    port: 25,
-    secure: false,
-    auth: false //   newline: 'unix',
-    //   path: '/usr/sbin/sendmail',
-    // port: 465,
-    // service: 'Gmail',
-    // host: smtp.host,
-    // port: smtp.port,
-    // secure: true, 
-    // auth: {
-    //   user: user.username, 
-    //   pass: user.password, 
-    // },
-
+    //   host: 'localhost',
+    //   port: 25,
+    //   secure: false,
+    //   auth: false,
+    newline: 'unix',
+    path: '/usr/sbin/sendmail',
+    port: 465,
+    service: 'Gmail',
+    host: smtp.host,
+    port: smtp.port,
+    secure: true,
+    auth: {
+      user: user.username,
+      pass: user.password
+    }
   });
   transporter.sendMail({
     from: 'info@redautorent.ee',
