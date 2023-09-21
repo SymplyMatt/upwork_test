@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "14.17",
+    "node": "12.4.0",
     "npm": "6.9.1"
   },
   "scripts": {
@@ -36,6 +36,7 @@
     "react-transition-group": "^4.4.1",
     "sass": "^1.32.11",
     "swiper": "^6.6.2",
+    
     "uuid": "^8.3.2"
   }
 }
