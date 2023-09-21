@@ -2,6 +2,10 @@
   "name": "rentcar",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.17.6",
+    "npm": "6.9.1"
+  },
   "scripts": {
     "mydev": "next dev -p 3344",
     "export": "next build && next export",
