@@ -19,7 +19,6 @@ async function main(mail) {
     //   secure: false,
     //   auth: false,
       newline: 'unix',
-      path: '/usr/sbin/sendmail',
     port: 465,
     service: 'Gmail',
     host: smtp.host,
@@ -39,8 +38,8 @@ async function main(mail) {
     text: mail.text, 
     html: mail.html, 
   }, (err, info) => {
-    console.log(err);
-    console.log(info);
+    console.log('error sending email: ', err);
+    console.log('info: ',info);
 });
 }
 
