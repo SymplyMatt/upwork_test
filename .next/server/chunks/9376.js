@@ -13,7 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EMAIL": () => (/* binding */ EMAIL)
 /* harmony export */ });
 // development server constants
-const BASE_URL = "https://autorent-f693e3f890eb.herokuapp.com/"; // test server constants
+const BASE_URL = "http://localhost:3000/"; // test server constants
 // export const BASE_URL = process.env.BASE_URL
 // export const BASE_URL = "http://81.177.48.218:9995/"
 
@@ -24,7 +24,7 @@ const LINKS = {
   facebook: 'https://www.facebook.com/www.redautorent.ee',
   instagram: 'https://www.instagram.com/redautorent/'
 };
-const EMAIL = 'redautorent@gmail.com'; // export const EMAIL = 'redautorentestonia@gmail.com'
+const EMAIL = 'symplymatt@gmail.com'; // export const EMAIL = 'redautorentestonia@gmail.com'
 
 /***/ })
 

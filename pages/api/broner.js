@@ -7,32 +7,28 @@ const smtp = {
   port: parseInt(process.env.GMAIL_PORT)
 }
 const user = {
-  username: 'symplymatt@gmail.com',
-  password: 'hkxqumwnhprnbuyr',
-}
+    username: process.env.GMAIL_USERNAME,
+    password: process.env.GMAIL_PASSWORD,
+  }
+  
 
 async function main(mail) {
-  let transporter = nodemailer.createTransport({
-      sendmail: true,
-    //   host: 'localhost',
-    //   port: 25,
-    //   secure: false,
-    //   auth: false,
-      newline: 'unix',
+    let transporter = nodemailer.createTransport({
+        // true for 465, false for other ports
+    host: "smtp.gmail.com",
     port: 465,
-    service: 'Gmail',
-    host: smtp.host,
-    port: smtp.port,
-    secure: true, 
+    secure: true,
     auth: {
-      user: user.username, 
-      pass: user.password, 
-    },
-  });
+          user: user.username, 
+          pass: user.password, 
+        },
+    // tls : {
+    //     rejectUnauthorized : false
+    // }
+    });
 
   transporter.sendMail({
     from: 'info@redautorent.ee', 
-    // to: 'redautorentestonia@gmail.com', 
     to: EMAIL, 
     subject: "RED Autorent | " + mail.subject, 
     text: mail.text, 
@@ -204,6 +200,7 @@ export default async (req, res) => {
   const mail = { text, html, subject }
   // await main(mail)
   console.log('Start mail' + new Date())
+  console.log(user);
   await main(mail)
   .then(() => {
     return res.status(200).json({ status: 'ok' })

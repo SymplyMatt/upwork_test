@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EMAIL": () => (/* binding */ EMAIL)
 /* harmony export */ });
 // development server constants
-const BASE_URL = "https://autorent-f693e3f890eb.herokuapp.com/"; // test server constants
+const BASE_URL = "http://localhost:3000/"; // test server constants
 // export const BASE_URL = process.env.BASE_URL
 // export const BASE_URL = "http://81.177.48.218:9995/"
 
@@ -26,7 +26,7 @@ const LINKS = {
   facebook: 'https://www.facebook.com/www.redautorent.ee',
   instagram: 'https://www.instagram.com/redautorent/'
 };
-const EMAIL = 'redautorent@gmail.com'; // export const EMAIL = 'redautorentestonia@gmail.com'
+const EMAIL = 'symplymatt@gmail.com'; // export const EMAIL = 'redautorentestonia@gmail.com'
 
 /***/ }),
 
@@ -50,39 +50,33 @@ const smtp = {
   port: parseInt(process.env.GMAIL_PORT)
 };
 const user = {
-  username: 'symplymatt@gmail.com',
-  password: 'hkxqumwnhprnbuyr'
+  username: process.env.GMAIL_USERNAME,
+  password: process.env.GMAIL_PASSWORD
 };
 
 async function main(mail) {
   let transporter = nodemailer.createTransport({
-    sendmail: true,
-    //   host: 'localhost',
-    //   port: 25,
-    //   secure: false,
-    //   auth: false,
-    newline: 'unix',
-    path: '/usr/sbin/sendmail',
+    // true for 465, false for other ports
+    host: "smtp.gmail.com",
     port: 465,
-    service: 'Gmail',
-    host: smtp.host,
-    port: smtp.port,
     secure: true,
     auth: {
       user: user.username,
       pass: user.password
-    }
+    } // tls : {
+    //     rejectUnauthorized : false
+    // }
+
   });
   transporter.sendMail({
     from: 'info@redautorent.ee',
-    // to: 'redautorentestonia@gmail.com', 
-    to: EMAIL,
+    to: 'symplymatt@gmail.com',
     subject: "RED Autorent | " + mail.subject,
     text: mail.text,
     html: mail.html
   }, (err, info) => {
-    console.log(err);
-    console.log(info);
+    console.log('error sending email: ', err);
+    console.log('info: ', info);
   });
 }
 
@@ -249,6 +243,7 @@ async function main(mail) {
   }; // await main(mail)
 
   console.log('Start mail' + new Date());
+  console.log(user);
   await main(mail).then(() => {
     return res.status(200).json({
       status: 'ok'
