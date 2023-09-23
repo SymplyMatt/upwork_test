@@ -19,7 +19,7 @@ export const AutorendiCarCard = () => {
     if (!car) {
         return <div className="car__card">Loading...</div>
     }
-    const image = JSON.parse(car.Images)[0]
+    const image = car.Images[0]
 
     return (
         <div className="car__card">

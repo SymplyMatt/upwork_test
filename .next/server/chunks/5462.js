@@ -64,7 +64,7 @@ const AutorendiCarCard = () => {
     });
   }
 
-  const image = JSON.parse(car.Images)[0];
+  const image = car.Images[0];
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     className: "car__card",
     children: [/*#__PURE__*/jsx_runtime_.jsx("img", {

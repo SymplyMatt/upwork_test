@@ -6,7 +6,8 @@ import base64Img from 'base64-img'
 import { BASE_URL } from "../../../components/Constants"
 import excessimages from "../../../utils/excessimages"
 import { v4 as uuidv4 } from 'uuid'
-
+import axios from "axios"
+import { EXTERNAL_API } from "../../../components/Constants"
 const prisma = new PrismaClient({})
 
 export const config = {
@@ -37,14 +38,15 @@ export default async (req, res) => {
         const { method, body } = req
         if (method == 'PUT') {
             const data = JSON.parse(body)
-            const images = JSON.parse(data.Images)
-            const iPrep = images.map(image => {
-                if (image.match('base64')) {
-                    return saveFile(image)
-                } else {
-                    return image
-                }
-            })
+            // const images = JSON.parse(data.Images)
+            const images = data.Images
+            // const iPrep = images.map(image => {
+            //     if (image.match('base64')) {
+            //         return saveFile(image)
+            //     } else {
+            //         return image
+            //     }
+            // })
             // {...data, Images: JSON.stringify(iPrep)}
             const dataUpdate = {
                 id: parseInt(data.id),
@@ -59,18 +61,26 @@ export default async (req, res) => {
                 Sixday: parseInt(data.Sixday),
                 Week: parseInt(data.Week),
                 Month: parseInt(data.Month),
-                Images: JSON.stringify(iPrep)
+                // Images: JSON.stringify(iPrep)
+                Images: images
             }
-
-            const updateCar = await prisma.car.update({
-                where: {
-                    id: dataUpdate.id
-                },
-                data: dataUpdate
-            })
-            const deleteExcessImages = await excessimages()
+            const response = await axios.post(EXTERNAL_API + '/update', dataUpdate, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                });
+                const resData = response.data.car;
+                console.log(resData);
+            // const updateCar = await prisma.car.update({
+            //     where: {
+            //         id: dataUpdate.id
+            //     },
+            //     data: dataUpdate
+            // })
+            // const deleteExcessImages = await excessimages()
             
-            res.status(200).json({ updateCar, deleteExcessImages })
+            // res.status(200).json({ updateCar, deleteExcessImages })
+            res.status(200).json({ resData })
         }
     } else {
         redirect('/admin/login')

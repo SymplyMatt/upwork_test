@@ -102,8 +102,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9376);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4730);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5152);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5282);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2376);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5282);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+
+
 
 
 
@@ -128,10 +132,18 @@ function Autod({
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(async () => {
     if (data.status !== 200) {
       try {
+        const response = await axios__WEBPACK_IMPORTED_MODULE_4___default().get(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.EXTERNAL_API + '/getAll', {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const resData = response.data.allCars;
+        console.log(resData);
         const res = await fetch(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.BASE_URL + "api/catalog");
         console.log(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.BASE_URL);
         const json = await res.json();
-        ctx.setCatalog(json);
+        console.log(json);
+        ctx.setCatalog(resData);
       } catch (e) {
         console.log(e);
       }
@@ -139,16 +151,23 @@ function Autod({
       ctx.setCatalog(data.cars);
     }
   }, [data]);
-  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx(AutodPage, {});
+  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx(AutodPage, {});
 }
 
 Autod.getInitialProps = async ctx => {
   try {
-    const res = await fetch(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.BASE_URL + "api/catalog");
-    const json = await res.json();
+    const response = await axios__WEBPACK_IMPORTED_MODULE_4___default().get(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.EXTERNAL_API + '/getAll', {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const resData = response.data.allCars;
+    console.log(resData); // const res = await fetch(BASE_URL + "api/catalog")
+    // const json = await res.json()
+
     return {
       data: {
-        cars: json,
+        cars: resData,
         status: 200
       }
     };
@@ -161,6 +180,14 @@ Autod.getInitialProps = async ctx => {
     };
   }
 };
+
+/***/ }),
+
+/***/ 2376:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("axios");
 
 /***/ }),
 

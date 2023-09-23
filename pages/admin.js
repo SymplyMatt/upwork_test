@@ -4,11 +4,12 @@ import { MainLayout } from '../components/Layouts/MainLayout.js'
 import styles from '../styles/admin.module.sass'
 import { useEffect, useState } from 'react'
 import { BASE_URL } from '../components/Constants'
+import { EXTERNAL_API } from '../components/Constants'
 import { useRouter } from "next/router"
 import { signIn, signout, signOut, useSession } from "next-auth/client"
 import { PopupSettings } from '../components/Content/Admin/PopupSettings'
 import { FetchLoading } from '../components/ui/FetchLoading'
-
+import axios from 'axios'
 export default function Admin() {
     const [cars, setCars] = useState(false)
     const [session, loading] = useSession()
@@ -22,9 +23,15 @@ export default function Admin() {
     useEffect(async () => {
         console.log('is admin')
         try {
-            const res = await fetch(BASE_URL + "api/catalog")
-            const json = await res.json()
-            setCars(json)
+            const response = await axios.get(EXTERNAL_API + '/getAll', {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            });
+            const resData = response.data.allCars;
+            // const res = await fetch(BASE_URL + "api/catalog")
+            // const json = await res.json()
+            setCars(resData)
         } catch (e) {
             console.log(e)
         }
@@ -55,7 +62,8 @@ export default function Admin() {
         Sixday: 0,
         Week: 0,
         Month: 0,
-        Images: JSON.stringify([]),
+        // Images: JSON.stringify([]),
+        Images: [],
     }
 
     return (

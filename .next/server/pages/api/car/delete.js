@@ -17,6 +17,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_auth_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8104);
 /* harmony import */ var next_auth_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_auth_client__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils_excessimages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9197);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2376);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_Constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9376);
+
+
 
 
 
@@ -36,12 +41,21 @@ const prisma = new _prisma_client__WEBPACK_IMPORTED_MODULE_0__.PrismaClient({});
   if (method !== 'DELETE') res.status(501).json({
     message: 'bad mathod'
   });
-  const deleteCar = await prisma.car.delete({
-    where: {
-      id: data.id
+  const response = await axios__WEBPACK_IMPORTED_MODULE_3___default().post(_components_Constants__WEBPACK_IMPORTED_MODULE_4__.EXTERNAL_API + '/delete', {
+    id: data.id
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
     }
   });
-  const deleteExcessImages = await (0,_utils_excessimages__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z)();
+  const resData = response.data.car;
+  console.log(resData); // const deleteCar = await prisma.car.delete({
+  //     where: {
+  //         id: data.id
+  //     }
+  // });
+  // const deleteExcessImages = await excessimages();
+
   res.status(200).json(body);
 });
 
@@ -51,6 +65,13 @@ const prisma = new _prisma_client__WEBPACK_IMPORTED_MODULE_0__.PrismaClient({});
 /***/ ((module) => {
 
 module.exports = require("@prisma/client");
+
+/***/ }),
+
+/***/ 2376:
+/***/ ((module) => {
+
+module.exports = require("axios");
 
 /***/ }),
 
@@ -89,7 +110,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [9197], () => (__webpack_exec__(2163)));
+var __webpack_exports__ = __webpack_require__.X(0, [6593], () => (__webpack_exec__(2163)));
 module.exports = __webpack_exports__;
 
 })();

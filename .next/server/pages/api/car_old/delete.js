@@ -2,33 +2,8 @@
 (() => {
 var exports = {};
 exports.id = 4239;
-exports.ids = [4239,9376];
+exports.ids = [4239];
 exports.modules = {
-
-/***/ 9376:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BASE_URL": () => (/* binding */ BASE_URL),
-/* harmony export */   "LINKS": () => (/* binding */ LINKS),
-/* harmony export */   "EMAIL": () => (/* binding */ EMAIL)
-/* harmony export */ });
-// development server constants
-const BASE_URL = "http://localhost:3000/"; // test server constants
-// export const BASE_URL = process.env.BASE_URL
-// export const BASE_URL = "http://81.177.48.218:9995/"
-
-const LINKS = {
-  mapAddress: 'https://goo.gl/maps/GpNUmh4JMXHcN32w8',
-  phone: 'tel:+3725535603',
-  email: 'mailto:redautorent@gmail.com',
-  facebook: 'https://www.facebook.com/www.redautorent.ee',
-  instagram: 'https://www.instagram.com/redautorent/'
-};
-const EMAIL = 'symplymatt@gmail.com'; // export const EMAIL = 'redautorentestonia@gmail.com'
-
-/***/ }),
 
 /***/ 1348:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -127,7 +102,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [9197], () => (__webpack_exec__(1348)));
+var __webpack_exports__ = __webpack_require__.X(0, [6593], () => (__webpack_exec__(1348)));
 module.exports = __webpack_exports__;
 
 })();

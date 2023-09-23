@@ -39,9 +39,9 @@ export const PopupSettings = ({ typeSubmit, close, car }) => {
     function deleteImage(index) {
         setSettings(prevState => {
             let state = prevState
-            let images = JSON.parse(state['Images'])
+            let images = state['Images'];
             images = images.filter((image, i) => i !== index)
-            state['Images'] = JSON.stringify(images)
+            state['Images'] = images
             console.log(settings.Images)
             return { ...state }
         })
@@ -52,7 +52,7 @@ export const PopupSettings = ({ typeSubmit, close, car }) => {
         setSettings((prevState) => {
             let state = prevState
             if (current.name == 'Images') {
-
+                
                 const files = Array.from(current.files)
                 files.forEach((file, index) => {
                     if (!file.type.match('image')) {
@@ -66,12 +66,12 @@ export const PopupSettings = ({ typeSubmit, close, car }) => {
                     reader.onload = (ev) => {
                         setSettings(prevState => {
                             let currentState = prevState
-                            let stateImages = JSON.parse(currentState['Images'])
+                            let stateImages = currentState['Images']
                             if (stateImages.length > 8) {
                                 return { ...currentState }
                             }
                             stateImages.push(ev.target.result)
-                            currentState['Images'] = JSON.stringify(stateImages)
+                            currentState['Images'] = stateImages
                             return { ...currentState }
                         })
                     }
@@ -121,7 +121,7 @@ export const PopupSettings = ({ typeSubmit, close, car }) => {
                 <div className={styles["admin-image-picker"]}>
 
                     <div className={styles["admin-images-list"]}>
-                        {JSON.parse(settings.Images).length > 0 && JSON.parse(settings.Images).map((image, index) => {
+                        {settings.Images.length > 0 && settings.Images.map((image, index) => {
                             return (
                                 <div key={index + 'imagetoupload'} className={`${styles['admin-image-item']}`}>
                                     <div onClick={() => deleteImage(index)} className={`icon icon__trash ${styles['admin-image-delete']}`}></div>

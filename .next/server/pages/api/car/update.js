@@ -2,33 +2,8 @@
 (() => {
 var exports = {};
 exports.id = 1675;
-exports.ids = [1675,9376];
+exports.ids = [1675];
 exports.modules = {
-
-/***/ 9376:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BASE_URL": () => (/* binding */ BASE_URL),
-/* harmony export */   "LINKS": () => (/* binding */ LINKS),
-/* harmony export */   "EMAIL": () => (/* binding */ EMAIL)
-/* harmony export */ });
-// development server constants
-const BASE_URL = "http://localhost:3000/"; // test server constants
-// export const BASE_URL = process.env.BASE_URL
-// export const BASE_URL = "http://81.177.48.218:9995/"
-
-const LINKS = {
-  mapAddress: 'https://goo.gl/maps/GpNUmh4JMXHcN32w8',
-  phone: 'tel:+3725535603',
-  email: 'mailto:redautorent@gmail.com',
-  facebook: 'https://www.facebook.com/www.redautorent.ee',
-  instagram: 'https://www.instagram.com/redautorent/'
-};
-const EMAIL = 'symplymatt@gmail.com'; // export const EMAIL = 'redautorentestonia@gmail.com'
-
-/***/ }),
 
 /***/ 502:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -52,6 +27,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_excessimages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9197);
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(1231);
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(2376);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+
+
 
 
 
@@ -70,10 +49,10 @@ const config = {
 };
 
 function saveFile(file) {
-  const fileName = (0,uuid__WEBPACK_IMPORTED_MODULE_7__.v4)();
-  const uploadPath = path__WEBPACK_IMPORTED_MODULE_3___default().join(process.cwd(), 'public', 'upload');
-  const fileP = base64_img__WEBPACK_IMPORTED_MODULE_4___default().imgSync(file, uploadPath, fileName);
-  const fileurl = '/' + fileP.split((path__WEBPACK_IMPORTED_MODULE_3___default().sep)).splice(-2).join('/');
+  const fileName = uuidv4();
+  const uploadPath = path.join(process.cwd(), 'public', 'upload');
+  const fileP = base64Img.imgSync(file, uploadPath, fileName);
+  const fileurl = '/' + fileP.split(path.sep).splice(-2).join('/');
   return fileurl;
 }
 
@@ -89,15 +68,16 @@ function saveFile(file) {
     } = req;
 
     if (method == 'PUT') {
-      const data = JSON.parse(body);
-      const images = JSON.parse(data.Images);
-      const iPrep = images.map(image => {
-        if (image.match('base64')) {
-          return saveFile(image);
-        } else {
-          return image;
-        }
-      }); // {...data, Images: JSON.stringify(iPrep)}
+      const data = JSON.parse(body); // const images = JSON.parse(data.Images)
+
+      const images = data.Images; // const iPrep = images.map(image => {
+      //     if (image.match('base64')) {
+      //         return saveFile(image)
+      //     } else {
+      //         return image
+      //     }
+      // })
+      // {...data, Images: JSON.stringify(iPrep)}
 
       const dataUpdate = {
         id: parseInt(data.id),
@@ -112,18 +92,26 @@ function saveFile(file) {
         Sixday: parseInt(data.Sixday),
         Week: parseInt(data.Week),
         Month: parseInt(data.Month),
-        Images: JSON.stringify(iPrep)
+        // Images: JSON.stringify(iPrep)
+        Images: images
       };
-      const updateCar = await prisma.car.update({
-        where: {
-          id: dataUpdate.id
-        },
-        data: dataUpdate
+      const response = await axios__WEBPACK_IMPORTED_MODULE_8___default().post(_components_Constants__WEBPACK_IMPORTED_MODULE_5__.EXTERNAL_API + '/update', dataUpdate, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
-      const deleteExcessImages = await (0,_utils_excessimages__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)();
+      const resData = response.data.car;
+      console.log(resData); // const updateCar = await prisma.car.update({
+      //     where: {
+      //         id: dataUpdate.id
+      //     },
+      //     data: dataUpdate
+      // })
+      // const deleteExcessImages = await excessimages()
+      // res.status(200).json({ updateCar, deleteExcessImages })
+
       res.status(200).json({
-        updateCar,
-        deleteExcessImages
+        resData
       });
     }
   } else {
@@ -137,6 +125,13 @@ function saveFile(file) {
 /***/ ((module) => {
 
 module.exports = require("@prisma/client");
+
+/***/ }),
+
+/***/ 2376:
+/***/ ((module) => {
+
+module.exports = require("axios");
 
 /***/ }),
 
@@ -189,7 +184,7 @@ module.exports = require("uuid");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [9197], () => (__webpack_exec__(502)));
+var __webpack_exports__ = __webpack_require__.X(0, [6593], () => (__webpack_exec__(502)));
 module.exports = __webpack_exports__;
 
 })();

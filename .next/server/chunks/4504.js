@@ -29,7 +29,7 @@ swiper_core__WEBPACK_IMPORTED_MODULE_1___default().use([swiper_core__WEBPACK_IMP
 const CarSlider = ({
   images
 }) => {
-  images = JSON.parse(images);
+  // images = JSON.parse(images)
   const {
     0: slider,
     1: setSlider
