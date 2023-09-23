@@ -138,11 +138,9 @@ function Autod({
           }
         });
         const resData = response.data.allCars;
-        console.log(resData);
         const res = await fetch(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.BASE_URL + "api/catalog");
         console.log(_components_Constants__WEBPACK_IMPORTED_MODULE_1__.BASE_URL);
         const json = await res.json();
-        console.log(json);
         ctx.setCatalog(resData);
       } catch (e) {
         console.log(e);

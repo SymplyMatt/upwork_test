@@ -50,8 +50,8 @@ export default async (req, res) => {
             const data = JSON.parse(body)
             // const images = JSON.parse(data.Images)
             const images = data.Images;
-            const base64Images = images.filter(i => !i.includes('base64'));
-            const nonBase64Images = images.filter(i => i.includes('base64'));
+            const base64Images = images.filter(i => i.includes('base64'));
+            const nonBase64Images = images.filter(i => !i.includes('base64'));
             // Base64-encoded image data
             const uploadImages = async() =>{
                 let imageUrls = [];
@@ -98,6 +98,10 @@ export default async (req, res) => {
                 // Images: JSON.stringify(iPrep)
                 Images: [...await uploadImages(), ...nonBase64Images]
             }
+            console.log('nonBase64Images: ',nonBase64Images);
+            console.log('base64Images: ',base64Images);
+            console.log('dataUpdate images: ',dataUpdate.Images);
+
             const response = await axios.post(EXTERNAL_API + '/update', dataUpdate, {
                 headers: {
                     'Content-Type': 'application/json'

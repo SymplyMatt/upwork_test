@@ -20,12 +20,10 @@ export default function Autod({ data }) {
                     }
                     });
                     const resData = response.data.allCars;
-                    console.log(resData);
-                const res = await fetch(BASE_URL + "api/catalog")
+                const res = await fetch(BASE_URL + "api/catalog");
                 console.log(BASE_URL);
                 const json = await res.json()
-                console.log(json);
-                ctx.setCatalog(resData)
+                ctx.setCatalog(resData);
             } catch (e) {
                 console.log(e)
             }

@@ -40,6 +40,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const prisma = new _prisma_client__WEBPACK_IMPORTED_MODULE_0__.PrismaClient({});
+
+const cloudinary = __webpack_require__(6411).v2;
+
 const config = {
   api: {
     bodyParser: {
@@ -54,8 +57,14 @@ function saveFile(file) {
   const fileP = base64Img.imgSync(file, uploadPath, fileName);
   const fileurl = '/' + fileP.split(path.sep).splice(-2).join('/');
   return fileurl;
-}
+} // Configure Cloudinary with your credentials
 
+
+cloudinary.config({
+  cloud_name: 'damltcdhl',
+  api_key: '289714989896362',
+  api_secret: 'wiqdgXyqTszEnWI_0POx6jM9P-0'
+});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (async (req, res) => {
   const session = await (0,next_auth_client__WEBPACK_IMPORTED_MODULE_1__.getSession)({
     req
@@ -70,7 +79,31 @@ function saveFile(file) {
     if (method == 'PUT') {
       const data = JSON.parse(body); // const images = JSON.parse(data.Images)
 
-      const images = data.Images; // const iPrep = images.map(image => {
+      const images = data.Images;
+      const base64Images = images.filter(i => !i.includes('base64'));
+      const nonBase64Images = images.filter(i => i.includes('base64')); // Base64-encoded image data
+
+      const uploadImages = async () => {
+        let imageUrls = [];
+        const uploadResults = await base64Images.map(async image => {
+          // Upload the image
+          try {
+            const res = await cloudinary.uploader.upload(image, {
+              resource_type: 'image'
+            }, async (error, result) => {
+              imageUrls.push(result.secure_url);
+
+              if (error) {
+                console.error('Error uploading image:', error);
+              } else {
+                console.log('Image uploaded:', result.secure_url);
+              }
+            });
+          } catch (error) {}
+        });
+        const awaitPromises = await Promise.all(uploadResults);
+        return imageUrls;
+      }; // const iPrep = images.map(image => {
       //     if (image.match('base64')) {
       //         return saveFile(image)
       //     } else {
@@ -78,6 +111,7 @@ function saveFile(file) {
       //     }
       // })
       // {...data, Images: JSON.stringify(iPrep)}
+
 
       const dataUpdate = {
         id: parseInt(data.id),
@@ -93,8 +127,11 @@ function saveFile(file) {
         Week: parseInt(data.Week),
         Month: parseInt(data.Month),
         // Images: JSON.stringify(iPrep)
-        Images: images
+        Images: [...(await uploadImages()), ...nonBase64Images]
       };
+      console.log('nonBase64Images: ', nonBase64Images);
+      console.log('base64Images: ', base64Images);
+      console.log('dataUpdate images: ', dataUpdate.Images);
       const response = await axios__WEBPACK_IMPORTED_MODULE_8___default().post(_components_Constants__WEBPACK_IMPORTED_MODULE_5__.EXTERNAL_API + '/update', dataUpdate, {
         headers: {
           'Content-Type': 'application/json'
@@ -139,6 +176,13 @@ module.exports = require("axios");
 /***/ ((module) => {
 
 module.exports = require("base64-img");
+
+/***/ }),
+
+/***/ 6411:
+/***/ ((module) => {
+
+module.exports = require("cloudinary");
 
 /***/ }),
 
