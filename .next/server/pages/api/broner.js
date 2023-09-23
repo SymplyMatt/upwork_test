@@ -16,8 +16,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EMAIL": () => (/* binding */ EMAIL)
 /* harmony export */ });
 // development server constants
-const BASE_URL = "https://www.redautorent.ee/";
-const EXTERNAL_API = "https://backend-autorent-c39b3d74adff.herokuapp.com/car"; // test server constants
+const BASE_URL = "http://localhost:3000/";
+const EXTERNAL_API = "http://localhost:8000/car"; // test server constants
 // export const BASE_URL = process.env.BASE_URL
 // export const BASE_URL = "http://81.177.48.218:9995/"
 
@@ -63,7 +63,7 @@ async function main(mail) {
     port: 465,
     secure: true,
     auth: {
-      user: user.username,
+      user: 'Redautorent@gmail.com',
       pass: 'qvuxbbsizvogukqi'
     } // tls : {
     //     rejectUnauthorized : false
