@@ -108,7 +108,6 @@ export default async (req, res) => {
                 }
                 });
                 const resData = response.data.car;
-                console.log(resData);
             // const updateCar = await prisma.car.update({
             //     where: {
             //         id: dataUpdate.id

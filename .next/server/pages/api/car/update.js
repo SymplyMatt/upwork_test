@@ -80,8 +80,8 @@ cloudinary.config({
       const data = JSON.parse(body); // const images = JSON.parse(data.Images)
 
       const images = data.Images;
-      const base64Images = images.filter(i => !i.includes('base64'));
-      const nonBase64Images = images.filter(i => i.includes('base64')); // Base64-encoded image data
+      const base64Images = images.filter(i => i.includes('base64'));
+      const nonBase64Images = images.filter(i => !i.includes('base64')); // Base64-encoded image data
 
       const uploadImages = async () => {
         let imageUrls = [];
@@ -137,8 +137,7 @@ cloudinary.config({
           'Content-Type': 'application/json'
         }
       });
-      const resData = response.data.car;
-      console.log(resData); // const updateCar = await prisma.car.update({
+      const resData = response.data.car; // const updateCar = await prisma.car.update({
       //     where: {
       //         id: dataUpdate.id
       //     },
