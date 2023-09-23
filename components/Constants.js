@@ -1,6 +1,6 @@
 // development server constants
-export const BASE_URL = "http://localhost:3000/"
-export const EXTERNAL_API = "http://localhost:8000/car"
+export const BASE_URL = "https://www.redautorent.ee/"
+export const EXTERNAL_API = "https://backend-autorent-c39b3d74adff.herokuapp.com/car"
 // test server constants
 // export const BASE_URL = process.env.BASE_URL
 // export const BASE_URL = "http://81.177.48.218:9995/"

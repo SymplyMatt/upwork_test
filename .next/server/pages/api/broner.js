@@ -63,8 +63,8 @@ async function main(mail) {
     port: 465,
     secure: true,
     auth: {
-      user: 'Redautorent@gmail.com',
-      pass: 'qvuxbbsizvogukqi'
+      user: user.username,
+      pass: user.password
     } // tls : {
     //     rejectUnauthorized : false
     // }
@@ -72,7 +72,7 @@ async function main(mail) {
   });
   transporter.sendMail({
     from: 'info@redautorent.ee',
-    to: 'symplymatt@gmail.com',
+    to: EMAIL,
     subject: "RED Autorent | " + mail.subject,
     text: mail.text,
     html: mail.html
