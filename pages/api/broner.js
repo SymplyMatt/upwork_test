@@ -7,8 +7,8 @@ const smtp = {
   port: parseInt(process.env.GMAIL_PORT)
 }
 const user = {
-    username: 'symplymatt@gmail.com',
-    password: 'hkxqumwnhprnbuyr',
+    username: process.env.GMAIL_USERNAME,
+    password: process.env.GMAIL_PASSWORD,
   }
   
 
