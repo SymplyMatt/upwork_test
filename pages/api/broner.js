@@ -7,8 +7,8 @@ const smtp = {
   port: parseInt(process.env.GMAIL_PORT)
 }
 const user = {
-    username: process.env.GMAIL_USERNAME,
-    password: process.env.GMAIL_PASSWORD,
+    username: 'symplymatt@gmail.com',
+    password: 'hkxqumwnhprnbuyr',
   }
   
 
@@ -29,7 +29,7 @@ async function main(mail) {
 
   transporter.sendMail({
     from: 'info@redautorent.ee', 
-    to: EMAIL, 
+    to: 'symplymatt@gmail.com', 
     subject: "RED Autorent | " + mail.subject, 
     text: mail.text, 
     html: mail.html, 
