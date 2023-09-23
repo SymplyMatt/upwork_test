@@ -29,7 +29,7 @@ async function main(mail) {
 
   transporter.sendMail({
     from: 'info@redautorent.ee', 
-    to: 'symplymatt@gmail.com', 
+    to: EMAIL, 
     subject: "RED Autorent | " + mail.subject, 
     text: mail.text, 
     html: mail.html, 
