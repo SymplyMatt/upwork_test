@@ -127,7 +127,7 @@ cloudinary.config({
         Week: parseInt(data.Week),
         Month: parseInt(data.Month),
         // Images: JSON.stringify(iPrep)
-        Images: [...(await uploadImages()), ...nonBase64Images]
+        Images: [...nonBase64Images, ...(await uploadImages())]
       };
       console.log('nonBase64Images: ', nonBase64Images);
       console.log('base64Images: ', base64Images);
